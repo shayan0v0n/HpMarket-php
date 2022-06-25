@@ -1,5 +1,15 @@
 <?php
 
+require_once './server/setupDB.php';
+$setupDatabase = new SetupDB();
+
+if (!$setupDatabase-> checkErrorExist("apache")) {
+    $blogData = $setupDatabase-> getDatabaseData("blog");
+    $productData = $setupDatabase-> getDatabaseData("products");
+    $suggestBlog = array_slice($blogData, 0, 5);
+    $suggestProduct = array_slice($productData, 0, 5);
+}
+
 ?>
 
 <html lang="en">
@@ -11,9 +21,15 @@
     <link rel="stylesheet" href="./lib/fontawesome-free-6.1.1-web/css/all.css">
     <link rel="stylesheet" href="./styles/globalStyles.css">
     <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/shop.css">
     <title>PHPHp - Shop</title>
 </head>
 <body dir="rtl">
+        <?php if ($setupDatabase-> checkErrorExist("apache")) { ?>
+            <div class="text-center py-2 error-bar">
+                لطفا xampp خود را روشن کنید.
+            </div>
+        <?php };?>
                 <!-- HEADER -->
     <header>
         <nav class="navbar navbar-expand-lg main-navbar">
@@ -47,7 +63,164 @@
         </nav>
     </header>
     <main>
+        <div class="shop-banner">
+            <h2 class="text-center">فروشگاه HP</h2>
+            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+        </div>
+        <div class="row m-0 p-0">
+            <div class="col-md-8 col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <?php if($setupDatabase-> checkApacheRun("apache")) { ?>
+                            <?php foreach($productData as $item) { ?>
+                                <a href="#">
+                                    <div class="card shop-card">
+                                        <div class="row">
+                                            <div class="d-none d-md-block col-12 col-md-5">
+                                                <img src="./assets/imgs/<?= $item["imgPath"] ?>" class="w-75" />
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="row">
+                                                    <h5 class="text-center col"><?= $item["name"] ?></h5>
+                                                    <p class="text-center col"><?= $item["price"] ?></p>
+                                                </div>
+                                                <p><?= $item["description"] ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php }?>
+                        <?php }else {?>
+                            <div class="card shop-card">
+                                <div class="row">
+                                    <div class="d-none d-md-block col-12 col-md-5">
+                                        <img src="./assets/imgs/c.png" class="w-75" />
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="row">
+                                            <h5 class="text-center col"><span class="placeholder col-6 bg-primary"></span></h5>
+                                            <p class="text-center col"><span class="placeholder col-6 bg-primary"></span></p>
+                                        </div>
+                                            <li class="placeholder col-6 m-1"></li>
+                                            <li class="placeholder col-4 m-1"></li>
+                                            <li class="placeholder col-8 m-1"></li>
+                                            <li class="placeholder col-2 m-1"></li>
+                                            <li class="placeholder col-5 m-1"></li>
+                                            <li class="placeholder col-6 m-1"></li>
+                                            <li class="placeholder col-4 m-1"></li>
+                                            <li class="placeholder col-8 m-1"></li>
+                                            <li class="placeholder col-2 m-1"></li>
+                                            <li class="placeholder col-5 m-1"></li>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card shop-card">
+                                <div class="row">
+                                    <div class="d-none d-md-block col-12 col-md-5">
+                                        <img src="./assets/imgs/c.png" class="w-75" />
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="row">
+                                            <h5 class="text-center col"><span class="placeholder col-6 bg-primary"></span></h5>
+                                            <p class="text-center col"><span class="placeholder col-6 bg-primary"></span></p>
+                                        </div>
+                                            <li class="placeholder col-6 m-1"></li>
+                                            <li class="placeholder col-4 m-1"></li>
+                                            <li class="placeholder col-8 m-1"></li>
+                                            <li class="placeholder col-2 m-1"></li>
+                                            <li class="placeholder col-5 m-1"></li>
+                                            <li class="placeholder col-6 m-1"></li>
+                                            <li class="placeholder col-4 m-1"></li>
+                                            <li class="placeholder col-8 m-1"></li>
+                                            <li class="placeholder col-2 m-1"></li>
+                                            <li class="placeholder col-5 m-1"></li>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card shop-card">
+                                <div class="row">
+                                    <div class="d-none d-md-block col-12 col-md-5">
+                                        <img src="./assets/imgs/c.png" class="w-75" />
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="row">
+                                            <h5 class="text-center col"><span class="placeholder col-6 bg-primary"></span></h5>
+                                            <p class="text-center col"><span class="placeholder col-6 bg-primary"></span></p>
+                                        </div>
+                                            <li class="placeholder col-6 m-1"></li>
+                                            <li class="placeholder col-4 m-1"></li>
+                                            <li class="placeholder col-8 m-1"></li>
+                                            <li class="placeholder col-2 m-1"></li>
+                                            <li class="placeholder col-5 m-1"></li>
+                                            <li class="placeholder col-6 m-1"></li>
+                                            <li class="placeholder col-4 m-1"></li>
+                                            <li class="placeholder col-8 m-1"></li>
+                                            <li class="placeholder col-2 m-1"></li>
+                                            <li class="placeholder col-5 m-1"></li>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php }?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-none d-md-block">
+                <?php if (!$setupDatabase-> checkErrorExist("apache")) { ?>
+                    <div class="shop-suggests">
+                        <div class="suggest-banner">
+                                <h4 class="text-center">...مقالات پیشنهادی...</h4>
+                            <ul>
+                                <?php foreach($suggestBlog as $item) { ?>
+                                    <a href="#"><li><?= $item["name"]?></li></a>
+                                <?php }?>
+                            </ul>
+                        </div>
+                        <div class="suggest-banner">
+                            <h4 class="text-center">...محصولات پیشنهادی...</h4>
+                            <ul>
+                                <?php foreach($suggestProduct as $item) { ?>
+                                    <a href="#"><li><?= $item["name"]?></li></a>
+                                    <?php }?>
+                            </ul>
+                        </div>
+                    </div>
+                    <?php }else {?>
+                        <div class="shop-suggests">
+                            <div class="suggest-banner">
+                                    <h4 class="text-center"><span class="placeholder col-6 bg-primary"></span></h4>
+                                <ul>
+                                    <li class="placeholder col-6 m-1"></li>
+                                    <li class="placeholder col-4 m-1"></li>
+                                    <li class="placeholder col-8 m-1"></li>
+                                    <li class="placeholder col-2 m-1"></li>
+                                    <li class="placeholder col-5 m-1"></li>
+                                    <li class="placeholder col-6 m-1"></li>
+                                    <li class="placeholder col-4 m-1"></li>
+                                    <li class="placeholder col-8 m-1"></li>
+                                    <li class="placeholder col-2 m-1"></li>
+                                    <li class="placeholder col-5 m-1"></li>
+                                </ul>
+                            </div>
+                            <div class="suggest-banner">
+                                <h4 class="text-center"><span class="placeholder col-6 bg-primary"></span></h4>
+                                <ul>
+                                    <li class="placeholder col-6 m-1"></li>
+                                    <li class="placeholder col-4 m-1"></li>
+                                    <li class="placeholder col-8 m-1"></li>
+                                    <li class="placeholder col-2 m-1"></li>
+                                    <li class="placeholder col-5 m-1"></li>
+                                    <li class="placeholder col-6 m-1"></li>
+                                    <li class="placeholder col-4 m-1"></li>
+                                    <li class="placeholder col-8 m-1"></li>
+                                    <li class="placeholder col-2 m-1"></li>
+                                    <li class="placeholder col-5 m-1"></li>
+                                </ul>
+                            </div>
+                        </div>
 
+                <?php }?>
+            </div>
+        </div>
     </main>
                 <!-- FOOTER -->
                 <footer class="footer">

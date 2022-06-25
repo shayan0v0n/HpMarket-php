@@ -22,7 +22,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
     <link rel="stylesheet" href="./styles/globalStyles.css">
     <link rel="stylesheet" href="./styles/blog.css">
     <link rel="stylesheet" href="./styles/index.css">
-    <title>PHPHp - Shop</title>
+    <title>PHPHp - Blog</title>
 </head>
 <body dir="rtl">
     <?php if ($setupDatabase-> checkErrorExist("apache")) { ?>

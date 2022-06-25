@@ -1,0 +1,41 @@
+.shop-banner {
+  margin: 2rem;
+  padding: 1rem;
+  background: #007c83;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.shop-suggests {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  left: 0;
+}
+.shop-suggests a {
+  color: #fff;
+}
+
+.suggest-banner {
+  margin: 1.2rem;
+  padding: 1rem;
+  color: #fff;
+  border-radius: 10px;
+  background: #00adb5;
+}
+
+.shop-card {
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  transition: 0.3s;
+  color: #000 !important;
+}
+.shop-card:hover {
+  background: #00adb5;
+}
+.shop-card img {
+  border-left: 1px solid black;
+  margin-left: 0.3rem;
+}/*# sourceMappingURL=shop.css.map */

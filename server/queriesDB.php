@@ -25,7 +25,7 @@ class QueriesDB {
             name varchar(100) not null,
             price varchar(50) not null,
             description text not null,
-            imgPath varchar(50) null,
+            imgPath varchar(150) null,
             categoryID int NOT NULL,
             isSale boolean default 0,
             isPopular boolean default 0,
@@ -163,7 +163,6 @@ class QueriesDB {
          )";
           $pdo-> exec($currentSqlQuery);
           
-          $pdo-> exec($currentSqlQuery);
           $currentSqlQuery = "INSERT INTO products
           (name, price, description, imgPath, categoryID, isSale, isPopular)
           values
@@ -177,14 +176,13 @@ class QueriesDB {
           )";
            $pdo-> exec($currentSqlQuery);
            
-           $pdo-> exec($currentSqlQuery);
            $currentSqlQuery = "INSERT INTO products
            (name, price, description, imgPath, categoryID, isSale, isPopular)
            values
-           ('HP EliteBook 850 G8 - Wolf Pro Security Edition',
+           ('HP ENVY 16 inch Laptop PC',
            '10,000,000',
            'تیم‌ها از مکان‌های زیادی کار می‌کنند و به یک لپ‌تاپ قدرتمند، ایمن و بادوام نیاز دارند که به راحتی متصل شود تا شما را کارآمد نگه دارد. با HP EliteBook 850 نیازهای روز کاری چند کاره، چند مکان و سازمانی را برآورده کنید.',
-           'HP EliteBook 850 G8 - Wolf Pro Security Edition.png',
+           'HP ENVY 16 inch Laptop PC.png',
            1,
            0,
            1
@@ -192,7 +190,6 @@ class QueriesDB {
             $pdo-> exec($currentSqlQuery);
             // LAPTOPBUSENESS
             //DECKTOPBUSENESS
-            $pdo-> exec($currentSqlQuery);
             $currentSqlQuery = "INSERT INTO products
             (name, price, description, imgPath, categoryID, isSale, isPopular)
             values
