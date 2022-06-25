@@ -1,0 +1,37 @@
+.blog-banner {
+  margin: 2rem;
+  padding: 1rem;
+  background: #007c83;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.suggest-banner {
+  margin: 1.2rem;
+  padding: 1rem;
+  color: #fff;
+  border-radius: 10px;
+  background: #00adb5;
+}
+
+.blog-suggests {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  left: 0;
+}
+.blog-suggests a {
+  color: #fff;
+}
+
+.blog-card {
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  transition: 0.3s;
+  color: #000 !important;
+}
+.blog-card:hover {
+  background: #00adb5;
+}/*# sourceMappingURL=blog.css.map */

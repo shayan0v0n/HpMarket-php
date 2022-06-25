@@ -3,8 +3,12 @@
 require_once './server/setupDB.php';
 $setupDatabase = new SetupDB();
 
-if (!$setupDatabase-> checkErrorExist("apache"))
+if (!$setupDatabase-> checkErrorExist("apache")) {
     $blogData = $setupDatabase-> getDatabaseData("blog");
+    $productData = $setupDatabase-> getDatabaseData("products");
+    $suggestBlog = array_slice($blogData, 0, 5);
+    $suggestProduct = array_slice($productData, 0, 5);
+}
 
 ?>
 
@@ -16,10 +20,16 @@ if (!$setupDatabase-> checkErrorExist("apache"))
     <link rel="stylesheet" href="./lib/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./lib/fontawesome-free-6.1.1-web/css/all.css">
     <link rel="stylesheet" href="./styles/globalStyles.css">
+    <link rel="stylesheet" href="./styles/blog.css">
     <link rel="stylesheet" href="./styles/index.css">
     <title>PHPHp - Shop</title>
 </head>
 <body dir="rtl">
+    <?php if ($setupDatabase-> checkErrorExist("apache")) { ?>
+            <div class="text-center py-2 error-bar">
+                لطفا xampp خود را روشن کنید.
+            </div>
+    <?php };?>
                 <!-- HEADER -->
     <header>
         <nav class="navbar navbar-expand-lg main-navbar">
@@ -53,6 +63,121 @@ if (!$setupDatabase-> checkErrorExist("apache"))
         </nav>
     </header>
     <main>
+        <div class="blog-banner">
+            <h2 class="text-center">مقالات آموزشی</h2>
+            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+        </div>
+
+        <div class="row m-0 p-0">
+            <div class="col-md-8 col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <?php if($setupDatabase-> checkApacheRun("apache")) { ?>
+                            <?php foreach($blogData as $item) { ?>
+                                <a href="#">
+                                    <div class="card blog-card">
+                                        <div>
+                                            <h4><?= $item["name"] ?></h4>
+                                            <p><?= $item["body"] ?></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php }?>
+                        <?php }else {?>
+                            <a href="#">
+                                <div class="card blog-card">
+                                    <div>
+                                        <h4 class="m-1"><span class="placeholder col-6 bg-primary"></span></h4>
+                                        <span class="placeholder col-8 m-1"></span>
+                                        <span class="placeholder col-6 m-1"></span>
+                                        <span class="placeholder col-4 m-1"></span>
+                                        <span class="placeholder col-8 m-1"></span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="card blog-card">
+                                    <div>
+                                        <h4 class="m-1"><span class="placeholder col-6 bg-primary"></span></h4>
+                                        <span class="placeholder col-8 m-1"></span>
+                                        <span class="placeholder col-6 m-1"></span>
+                                        <span class="placeholder col-4 m-1"></span>
+                                        <span class="placeholder col-8 m-1"></span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="card blog-card">
+                                    <div>
+                                        <h4 class="m-1"><span class="placeholder col-6 bg-primary"></span></h4>
+                                        <span class="placeholder col-8 m-1"></span>
+                                        <span class="placeholder col-6 m-1"></span>
+                                        <span class="placeholder col-4 m-1"></span>
+                                        <span class="placeholder col-8 m-1"></span>
+                                    </div>
+                                </div>
+                            </a>
+                        <?php }?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-none d-md-block">
+                <?php if (!$setupDatabase-> checkErrorExist("apache")) { ?>
+                    <div class="blog-suggests">
+                        <div class="suggest-banner">
+                                <h4 class="text-center">...مقالات پیشنهادی...</h4>
+                            <ul>
+                                <?php foreach($suggestBlog as $item) { ?>
+                                    <a href="#"><li><?= $item["name"]?></li></a>
+                                <?php }?>
+                            </ul>
+                        </div>
+                        <div class="suggest-banner">
+                            <h4 class="text-center">...محصولات پیشنهادی...</h4>
+                            <ul>
+                                <?php foreach($suggestProduct as $item) { ?>
+                                    <a href="#"><li><?= $item["name"]?></li></a>
+                                    <?php }?>
+                            </ul>
+                        </div>
+                    </div>
+                    <?php }else {?>
+                        <div class="blog-suggests">
+                            <div class="suggest-banner">
+                                    <h4 class="text-center"><span class="placeholder col-6 bg-primary"></span></h4>
+                                <ul>
+                                    <li class="placeholder col-6 m-1"></li>
+                                    <li class="placeholder col-4 m-1"></li>
+                                    <li class="placeholder col-8 m-1"></li>
+                                    <li class="placeholder col-2 m-1"></li>
+                                    <li class="placeholder col-5 m-1"></li>
+                                    <li class="placeholder col-6 m-1"></li>
+                                    <li class="placeholder col-4 m-1"></li>
+                                    <li class="placeholder col-8 m-1"></li>
+                                    <li class="placeholder col-2 m-1"></li>
+                                    <li class="placeholder col-5 m-1"></li>
+                                </ul>
+                            </div>
+                            <div class="suggest-banner">
+                                <h4 class="text-center"><span class="placeholder col-6 bg-primary"></span></h4>
+                                <ul>
+                                    <li class="placeholder col-6 m-1"></li>
+                                    <li class="placeholder col-4 m-1"></li>
+                                    <li class="placeholder col-8 m-1"></li>
+                                    <li class="placeholder col-2 m-1"></li>
+                                    <li class="placeholder col-5 m-1"></li>
+                                    <li class="placeholder col-6 m-1"></li>
+                                    <li class="placeholder col-4 m-1"></li>
+                                    <li class="placeholder col-8 m-1"></li>
+                                    <li class="placeholder col-2 m-1"></li>
+                                    <li class="placeholder col-5 m-1"></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                <?php }?>
+            </div>
+        </div>
 
     </main>
                 <!-- FOOTER -->

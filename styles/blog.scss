@@ -1,0 +1,38 @@
+@import './variables.scss';
+
+.blog-banner {
+    margin: 2rem;
+    padding: 1rem;
+    background: $fifth_color;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.suggest-banner {
+    margin: 1.2rem;
+    padding: 1rem;
+    color: #fff;
+    border-radius: 10px;
+    background: $primary_color;
+}
+
+.blog-suggests {
+    position: sticky;
+    top: 10px;
+    left: 0;
+    a {
+        color: #fff;
+    }
+}
+
+.blog-card {
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    transition: .3s;
+    color: #000 !important;
+        &:hover {
+            background: $primary_color;
+        }
+}
