@@ -1,0 +1,32 @@
+@import './variables.scss';
+
+@font-face {
+    font-family: "vazir";
+    src: url("../assets/fonts/Vazir-Regular-FD.woff");
+}
+
+body {
+    background-color: $fourth_color;
+    font-family: "vazir";
+    direction: rtl;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: $third_color;
+    &:hover {
+            color: $third_color;
+    }
+}
+
+.main-navbar {
+    background-color: $primary_color !important;
+    color: $third_color !important;
+}
+
+.error-bar {
+    background: $fifth_color;
+    color: #fff;
+}

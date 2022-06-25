@@ -1,0 +1,21 @@
+.aboutus_banner {
+  margin: 2rem;
+  padding: 1rem;
+  background: #007c83;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.socialCard {
+  background: #00adb5;
+  color: #fff;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.socialCard:hover {
+  background: #007c83;
+}
+
+.socialIcon {
+  font-size: 2rem !important;
+}/*# sourceMappingURL=aboutUsStyle.css.map */

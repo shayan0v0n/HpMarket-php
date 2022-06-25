@@ -1,0 +1,67 @@
+@import './variables';
+
+.baner-custom {
+    background-color: $fifth_color;
+    color: $fourth_color;
+    margin: 3rem;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        button {
+            background-color: $fourth_color;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            border: none;
+            &:hover {
+                background-color: $fourth_color;
+                color: black;
+                border: none;
+            }
+        }
+}
+
+.category-card {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: none;
+    margin: 1.5rem !important;
+    transition: .3s;
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        }
+}
+
+.intoProduct {
+    background-color: $third_color;
+    padding: 1rem;
+}
+
+.footer {
+    background-color: $fifth_color;
+    color: $fourth_color;
+    padding: 1rem;
+}
+
+.footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+.link-box a {
+    color: #0672cb;
+    font-size: 1.5rem;
+}
+.link-box span {
+    font-size: 1.5rem;
+}
+
+.blog-place {
+    background-color: $third_color;
+    padding: 1rem;
+}
+
+.blogCardStyle {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    img {
+        height: 200px !important;
+    }
+}

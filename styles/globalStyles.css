@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "vazir";
+  src: url("../assets/fonts/Vazir-Regular-FD.woff");
+}
+body {
+  background-color: #eeeeee;
+  font-family: "vazir";
+  direction: rtl;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #d5d6d8;
+}
+a:hover {
+  color: #d5d6d8;
+}
+
+.main-navbar {
+  background-color: #00adb5 !important;
+  color: #d5d6d8 !important;
+}
+
+.error-bar {
+  background: #007c83;
+  color: #fff;
+}/*# sourceMappingURL=globalStyles.css.map */
