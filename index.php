@@ -45,8 +45,16 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                         <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">صفحه اصلی</a>
                         </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="/shop.php">فروشگاه</a>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdown" href="/shop.php">فروشگاه </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item text-center" href="/shop/desktop-business.php">دسکتاپ بیزنیس</a></li>
+                                <li><a class="dropdown-item text-center" href="/shop/desktop.php">دسکتاپ</a></li>
+                                <li><a class="dropdown-item text-center" href="/shop/laptop-business.php">لپ تاپ بیزنس</a></li>
+                                <li><a class="dropdown-item text-center" href="/shop/laptop-gaming.php">لپ تاپ گیمینگ</a></li>
+                                <li><a class="dropdown-item text-center" href="/shop/laptop.php">لپ تاپ</a></li>
+                                <li><a class="dropdown-item text-center" href="/shop/zworkstation.php">زد ورک استیشن</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="/blog.php">مقالات</a>
@@ -478,4 +486,5 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="./styles.index.js"></script>
 </html>

@@ -29,8 +29,16 @@
                         <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/">صفحه اصلی</a>
                         </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="/shop.php">فروشگاه</a>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdown" href="/shop.php">فروشگاه </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item text-center" href="/shop/desktop-business.php">دسکتاپ بیزنیس</a></li>
+                                <li><a class="dropdown-item text-center" href="/shop/desktop.php">دسکتاپ</a></li>
+                                <li><a class="dropdown-item text-center" href="/shop/laptop-business.php">لپ تاپ بیزنس</a></li>
+                                <li><a class="dropdown-item text-center" href="/shop/laptop-gaming.php">لپ تاپ گیمینگ</a></li>
+                                <li><a class="dropdown-item text-center" href="/shop/laptop.php">لپ تاپ</a></li>
+                                <li><a class="dropdown-item text-center" href="/shop/zworkstation.php">زد ورک استیشن</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link " href="/blog.php">مقالات</a>
