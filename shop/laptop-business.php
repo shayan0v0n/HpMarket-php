@@ -1,23 +1,29 @@
 <?php
 
+require_once '../server/setupDB.php';
+$setupDatabase = new SetupDB();
+
 ?>
 
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./styles/globalStyles.css">
-    <link rel="stylesheet" href="./styles/index.css">
-    <link rel="stylesheet" href="./styles/aboutUsStyle.css">
-    
-    <title>PHPHp - Shop</title>
+    <link rel="stylesheet" href="../styles/globalStyles.css">
+    <link rel="stylesheet" href="../styles/index.css">
+    <title>PHPhp Market - Laptop Business</title>
 </head>
 <body dir="rtl">
+    <?php if ($setupDatabase-> checkErrorExist("apache")) { ?>
+            <div class="text-center py-2 error-bar">
+                لطفا xampp خود را روشن کنید.
+            </div>
+    <?php };?>
                 <!-- HEADER -->
-    <header>
+                <header>
         <nav class="navbar navbar-expand-lg main-navbar">
             <div class="container">
                 <div class="container-fluid">
@@ -27,16 +33,16 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">صفحه اصلی</a>
+                        <a class="nav-link active" aria-current="page" href="/">صفحه اصلی</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="/shop.php">فروشگاه</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link " href="/blog.php">مقالات</a>
+                        <a class="nav-link" href="/blog.php">مقالات</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link active" href="/about-us">درباره ما</a>
+                        <a class="nav-link" href="/about-us.php">درباره ما</a>
                         </li>
                     </ul>
                 </div>
@@ -49,54 +55,10 @@
         </nav>
     </header>
     <main>
-
-    <div class="row aboutus_banner">
-        <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
-            <div>
-                <h2>درباره ما بیشتر بدانید</h2>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد.</p>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 text-center">
-            <img src="./assets/imgs/undraw_resume_re_hkth.svg" class="w-50" />
-        </div>
-    </div>
-    <div class="row text-center my-2 m-0">
-        <div class="col-12 col-md-4 text-center m-0 mt-2">
-            <div class="card socialCard">
-                    <a href="#">
-                        <div class="card-body">
-                            <i class="fa-brands fa-github mb-1 socialIcon"></i>
-                            <h2>Github</h2>
-                        </div>
-                     </a>
-            </div>
-        </div>
-        <div class="col-12 col-md-4 text-center m-0 mt-2">
-            <div class="card socialCard">
-                    <a href="#">
-                        <div class="card-body">
-                            <i class="fa-brands fa-telegram mb-1 socialIcon"></i>
-                            <h2>Telegram</h2>
-                        </div>
-                     </a>
-            </div>
-        </div>
-        <div class="col-12 col-md-4 text-center m-0 mt-2">
-            <div class="card socialCard">
-                    <a href="#">
-                        <div class="card-body">
-                            <i class="fa-brands fa-linkedin mb-1 socialIcon"></i>
-                            <h2>Linkedin</h2>
-                        </div>
-                     </a>
-            </div>
-        </div>
-    </div>
-
+        
     </main>
                 <!-- FOOTER -->
-                <footer class="footer">
+    <footer class="footer">
         <div class="row">
             <div class="col-12 col-md-2 text-center">
                 <div class="row">

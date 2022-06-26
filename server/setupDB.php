@@ -1,6 +1,6 @@
 <?php
 
-require_once './server/queriesDB.php';
+require_once 'queriesDB.php';
 
 class SetupDB extends QueriesDB {
     private $hostInfo = [

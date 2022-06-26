@@ -17,6 +17,7 @@ class QueriesDB {
             name varchar(100) not null,
             description varchar(250) not null,
             imgPath varchar(50) null,
+            rootPath varchar(30) not null,
             PRIMARY KEY(id))";
         $pdo-> exec($currentSqlQuery);
 
@@ -94,56 +95,62 @@ class QueriesDB {
 
     public function insertCategoriesData($pdo) {
         $currentSqlQuery = "INSERT INTO categories
-            (name, description, imgPath)
+            (name, description, imgPath, rootPath)
             values
             ('لپ تاپ بیزنس',
-            'ایمن ترین رایانه های شخصی HP با طراحی عالی برای نیروی کار فوق سیار',
-            'laptopBusiness.png'
+            'ایمن ترین رایانه های شخصی HP با طراحی عالی برای نیروی کار فوق سیار چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است  ',
+            'laptopBusiness.png',
+            'laptop-business'
         )";
        $pdo-> exec($currentSqlQuery);
 
         $currentSqlQuery = "INSERT INTO categories
-            (name, description, imgPath)
+            (name, description, imgPath, rootPath)
             values
             ('دسکتاپ بیزنس',
             'دستگاه‌های HP Thin Client و HP Chrome Enterprise ایمن و قابل مدیریت برای محیط‌های ابری و VDI ساخته شده‌اند.',
-            'decktopbusiness.png'
+            'desktopbusiness.png',
+            'desktop-business'
         )";
        $pdo-> exec($currentSqlQuery);
 
         $currentSqlQuery = "INSERT INTO categories
-            (name, description, imgPath)
+            (name, description, imgPath, rootPath)
             values
             ('زد ورک استیشن',
             'اعم از طراحی سه بعدی یا اجرای چندین برنامه، مؤلفه های کلاس ایستگاه کاری و گواهینامه های نرم افزار عملکرد را در سراسر گردش کار شما بهینه می کنند.',
-            'workstations.png'
+            'workstations.png',
+            'zworkstation'
         )";
        $pdo-> exec($currentSqlQuery);
 
         $currentSqlQuery = "INSERT INTO categories
-            (name, description, imgPath)
+            (name, description, imgPath, rootPath)
             values
             ('لپ تاپ',
             'لپ‌تاپ‌های قابل حمل فوق‌العاده به شما این امکان را می‌دهند که برای تجربه‌ای همهجانبه باورنکردنی، چیزهای بیشتری ببینید، در حالی که به شما امکان می‌دهند از هر کجا خلق کنید..',
-            'laptop.png'
+            'laptop.png',
+            'laptop'
         )";
        $pdo-> exec($currentSqlQuery);
 
         $currentSqlQuery = "INSERT INTO categories
-            (name, description, imgPath)
+            (name, description, imgPath, rootPath)
             values
             ('دسک تاپ',
             'سرگرمی خود را تقویت کنید. از دسترسی به مجموعه گسترده ای از گزینه های رسانه با فضای ذخیره سازی کافی و پشتیبانی از تجربه شنیداری فراگیر 5.1 فراگیر لذت ببرید...',
-            'decktop.png'
+            'desktop.png',
+            'desktop'
         )";
        $pdo-> exec($currentSqlQuery);
 
         $currentSqlQuery = "INSERT INTO categories
-            (name, description, imgPath)
+            (name, description, imgPath, rootPath)
             values
             ('سیستم گیمینگ',
             'این رایانه‌های شخصی پرقدرت به گونه‌ای طراحی شده‌اند که برای ایجاد محتوا، برنامه‌های کاربردی سخت و درهم شکستن دشمنان، عملکردی را در تغییر بازی به شما ارائه دهند...',
-            'laptopGaming.png'
+            'laptopGaming.png',
+            'laptop-gaming'
         )";
        $pdo-> exec($currentSqlQuery);
     }
