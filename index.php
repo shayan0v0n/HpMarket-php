@@ -103,7 +103,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                                             <div class="card-body">
                                                 <h5 class="card-title text-center"><?= $item["name"] ?></h5>
                                                 <p class="card-text text-right"><?= $item["description"] ?></p>
-                                                <a class="btn btn-primary w-100" href="/categories/<?= $item["name"] ?>.php">اطلاعات بیشتر</a>
+                                                <a class="btn btn-primary w-100" href="/shop/<?= $item["rootPath"] ?>.php">اطلاعات بیشتر</a>
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                                         <div class="card-body">
                                             <h5 class="card-title text-center"><?= $item["name"] ?></h5>
                                             <p class="card-text text-right"><?= $item["description"] ?></p>
-                                            <a class="btn btn-primary w-100" href="/categories/<?= $item["name"] ?>.php">اطلاعات بیشتر</a>
+                                            <a class="btn btn-primary w-100" href="/shop/<?= $item["rootPath"] ?>.php">اطلاعات بیشتر</a>
                                         </div>
                                         </div>
                                     </div>

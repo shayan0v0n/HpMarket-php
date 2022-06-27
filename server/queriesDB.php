@@ -249,6 +249,7 @@ class QueriesDB {
             0
             )";
              
+             $pdo-> exec($currentSqlQuery);
              $currentSqlQuery = "INSERT INTO products
             (name, price, description, imgPath, categoryID, isSale, isPopular)
             values
@@ -261,6 +262,7 @@ class QueriesDB {
             0
             )";
 
+            $pdo-> exec($currentSqlQuery);
             $currentSqlQuery = "INSERT INTO products
             (name, price, description, imgPath, categoryID, isSale, isPopular)
             values
@@ -272,6 +274,8 @@ class QueriesDB {
             1,
             0
             )";
+            
+            $pdo-> exec($currentSqlQuery);
              //WORKSTATION
              // LAPTOP DATA
              $currentSqlQuery = "INSERT INTO products 

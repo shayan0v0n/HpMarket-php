@@ -1,8 +1,25 @@
 <?php
 
 require_once '../server/setupDB.php';
+require_once '../server/getDatabase.php';
+require_once '../server/control.php';
 $setupDatabase = new SetupDB();
+$getDatabase = new GetDatabase();
+$control = new Control();
 
+if (!$setupDatabase-> checkErrorExist("apache")) {
+    $currentCategory = $getDatabase-> getCustomData("categories", "id", "4");
+    $currentProducts = $getDatabase-> getCustomData("products", "categoryID", "4");
+    $productsStatus = true;
+
+    if (isset($_POST["desktopBusinessSearch"])) {
+        $currentProducts = array_filter($currentProducts, function($item) {
+            return str_contains(trim(strtolower($item["name"])),  trim(strtolower($_POST["desktopBusinessSearch"])));
+        });
+        if (count($currentProducts) == 0)
+            $productsStatus = false;
+        }
+}
 ?>
 
 <html lang="en">
@@ -63,7 +80,153 @@ $setupDatabase = new SetupDB();
         </nav>
     </header>
     <main>
-        
+        <div class="category-banner">
+            <?php if (!$setupDatabase-> checkErrorExist("apache")) {?>
+                <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-md-7 d-flex align-items-center">
+                            <div>
+                                <h2><?= $currentCategory[0]["name"] ?></h2>
+                                <p class="mt-2"><?= $currentCategory[0]["description"] ?></p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 text-center">
+                            <img src="/assets/imgs/<?= $currentCategory[0]["imgPath"]?>" class="w-100" />
+                        </div>
+                    </div>
+                </div>
+            <?php }else {?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-7 d-flex align-items-center row">
+                            <div>
+                                <h2><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4 m-2" aria-hidden="true"></a></h2>
+                                <span class="placeholder col-8 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-8 m-1"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 text-center">
+                            <img src="/assets/imgs/c.png" class="w-100" />
+                        </div>
+                    </div>
+                </div>
+            <?php }?>
+        </div>
+        <div class="search-box">
+        <?php if (!$setupDatabase-> checkErrorExist("apache")) {?>
+            <form method="POST" action="./desktop-business.php">
+                <div class="input-group container" dir="ltr">
+                    <button class="input-group-text btn btn-success" id="basic-addon1" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" class="form-control" placeholder="به دنبال چه می گردید؟" aria-label="Username" aria-describedby="basic-addon1" name="desktopBusinessSearch">
+                </div>
+            </form>
+        <?php }else {?>
+            <form method="POST" action="./desktop-business.php">
+                <div class="input-group container" dir="ltr">
+                    <button class="input-group-text btn btn-success" id="basic-addon1" type="submit" disabled><i class="fa-solid fa-magnifying-glass" ></i></button>
+                    <input type="text" class="form-control" placeholder="به دنبال چه می گردید؟" aria-label="Username" aria-describedby="basic-addon1" name="desktopBusinessSearch" disabled>
+                </div>
+            </form>
+        <?php }?>
+        </div>
+
+        <section class="m-5">
+            <?php if (!$setupDatabase-> checkErrorExist("apache")) {?>
+                <?php foreach($currentProducts as $item) {?>
+                    <a href="/shop/desktop-business/<?=$control-> changeNameToUrl($item["name"])?>.php">
+                        <div class="card m-2 current-products">
+                            <div class="row p-2">
+                                <div class="col-12 col-md-4">
+                                    <img src="/assets/imgs/<?=$item['imgPath']?>" class="w-50" />
+                                </div>
+                                <div class="col-12 col-md-8 d-flex align-items-center">
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-12 col-md-6"><h5><?=$item["name"]?></h5></div>
+                                            <div class="col-12 col-md-6"><h5><?=$item["price"]?></h5></div>
+                                        </div>
+                                        <p><?=$item["description"]?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <?php }?>
+            <?php }else {?>
+                    <div class="card m-2 current-products">
+                        <div class="row p-2">
+                            <div class="col-12 col-md-4">
+                                <img src="/assets/imgs/c.png" class="w-50" />
+                            </div>
+                            <div class="col-12 col-md-8 d-flex align-items-center row">
+                                <div class="col-12 row">
+                                    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4 m-2" aria-hidden="true"></a>
+                                    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4 m-2" aria-hidden="true"></a>
+                                </div>
+                                <div class="col-12 row">
+                                    <span class="placeholder col-6 m-1"></span>
+                                    <span class="placeholder col-4 m-1"></span>
+                                    <span class="placeholder col-8 m-1"></span>
+                                    <span class="placeholder col-4 m-1"></span>
+                                    <span class="placeholder col-8 m-1"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card m-2 current-products">
+                        <div class="row p-2">
+                            <div class="col-12 col-md-4">
+                                <img src="/assets/imgs/c.png" class="w-50" />
+                            </div>
+                            <div class="col-12 col-md-8 d-flex align-items-center row">
+                                <div class="col-12 row">
+                                    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4 m-2" aria-hidden="true"></a>
+                                    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4 m-2" aria-hidden="true"></a>
+                                </div>
+                                <div class="col-12 row">
+                                    <span class="placeholder col-6 m-1"></span>
+                                    <span class="placeholder col-4 m-1"></span>
+                                    <span class="placeholder col-8 m-1"></span>
+                                    <span class="placeholder col-4 m-1"></span>
+                                    <span class="placeholder col-8 m-1"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card m-2 current-products">
+                        <div class="row p-2">
+                            <div class="col-12 col-md-4">
+                                <img src="/assets/imgs/c.png" class="w-50" />
+                            </div>
+                            <div class="col-12 col-md-8 d-flex align-items-center row">
+                                <div class="col-12 row">
+                                    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4 m-2" aria-hidden="true"></a>
+                                    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4 m-2" aria-hidden="true"></a>
+                                </div>
+                                <div class="col-12 row">
+                                    <span class="placeholder col-6 m-1"></span>
+                                    <span class="placeholder col-4 m-1"></span>
+                                    <span class="placeholder col-8 m-1"></span>
+                                    <span class="placeholder col-4 m-1"></span>
+                                    <span class="placeholder col-8 m-1"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <?php }?>
+        </section>
+        <?php if(!$setupDatabase-> checkErrorExist("apache")) {?>
+            <section>
+                    <?php if(!$productsStatus) {?>
+                    <div class="text-center">
+                        <h2>محصول یافت نشد</h2>
+                    </div>
+                    <?php }?>
+            </section>
+        <?php }?>
+
     </main>
                 <!-- FOOTER -->
     <footer class="footer">

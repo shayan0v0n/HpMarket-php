@@ -65,6 +65,34 @@
   height: 200px !important;
 }
 
+.category-banner {
+  padding: 2rem;
+  background: #007c83;
+  color: #fff;
+}
+.category-banner img {
+  border-radius: 8px;
+}
+
+.search-box {
+  background: #00adb5;
+  padding: 1rem;
+}
+.search-box input {
+  text-align: right !important;
+}
+
+.current-products {
+  color: #fff;
+  background: #00adb5;
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: 0.3s;
+}
+.current-products:hover {
+  background: #007c83;
+}
+
 @media all and (min-width: 992px) {
   .navbar .nav-item .dropdown-menu {
     display: none;
