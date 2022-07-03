@@ -1,0 +1,12 @@
+@import './variables.scss';
+
+.blog-banner {
+    background-color: $fifth_color;
+    padding: 1rem;
+    margin: 2rem;
+    border-radius: 10px;
+    color: #fff;
+        img {
+            border-radius: 10px;
+        }
+}

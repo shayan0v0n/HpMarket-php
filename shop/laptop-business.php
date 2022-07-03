@@ -136,7 +136,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
         <section class="m-5">
             <?php if (!$setupDatabase-> checkErrorExist("apache")) {?>
                 <?php foreach($currentProducts as $item) {?>
-                    <a href="/shop/desktop-business/<?=$control-> changeNameToUrl($item["name"])?>.php">
+                    <a href="/products/<?=$control-> changeNameToUrl($item["name"])?>.php">
                         <div class="card m-2 current-products">
                             <div class="row p-2">
                                 <div class="col-12 col-md-4">

@@ -1,7 +1,9 @@
 <?php
 
 require_once './server/setupDB.php';
+require_once './server/control.php';
 $setupDatabase = new SetupDB();
+$control = new Control();
 
 if (!$setupDatabase-> checkErrorExist("apache")) {
     $categoriesData = $setupDatabase-> getDatabaseData("categories");
@@ -262,11 +264,9 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                         <div class="col-12 col-md-6 d-flex justify-content-center flex-column">
                             <div>
                                 <h2 class="mb-3"><?= $item["name"]?></h2>
-                            <p><?= $item["body"]?></p>
-                            <div class="text-center link-box">
-                                    <a href="#">خرید کنید</a>
-                                    <span>|</span>
-                                    <a href="#">اطلاعات بیشتر</a>
+                                <p><?= $item["body"]?></p>
+                                <div class="text-center link-box">
+                                    <a href="/blog/<?=$control-> changeNameToUrl($item["rootPath"])?>.php">اطلاعات بیشتر</a>
                                 </div>
                             </div>
                         </div>
@@ -308,9 +308,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                                     <h2 class="mb-3"><?= $item["name"]?></h2>
                                     <p><?= $item["body"]?></p>
                                     <div class="text-center link-box">
-                                        <a href="#">خرید کنید</a>
-                                        <span>|</span>
-                                        <a href="#">اطلاعات بیشتر</a>
+                                        <a href="/blog/<?= $control-> changeNameToUrl($item["rootPath"])?>.php">اطلاعات بیشتر</a>
                                     </div>
                             </div>
                         </div>
@@ -344,7 +342,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                 <p>
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
                 </p>
-                <a href="/blog">
+                <a href="/blog.php">
                     <button class="btn btn-primary">مطالب بیشتر</button>
                 </a>
             </div>
@@ -352,23 +350,25 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                 <div class="row mt-3">
                     <?php foreach($blogData as $item) { ?>
                         <div class="col-12 col-md-4">
-                            <div class="card m-3 p-2 blogCardStyle">
-                                <img src="./assets/imgs/<?= $item["imgPath"] ?>" />
-                                <div class="card-body">
-                                    <h4 class="card-title"><?= $item["name"] ?></h4>
-                                    <p class="card-text"><?= $item["body"] ?></p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-6 text-center">
-                                            <span><i class="fa fa-eye mx-1"></i><?= $item["view_count"] ?></span>
-                                        </div>
-                                        <div class="col-6 text-center">
-                                            <span><i class="fas fa-thumbs-up mx-2"></i><?= $item["likes"] ?></span>
+                            <a href="/blog/<?=$control-> changeNameToUrl($item["rootPath"])?>.php">
+                                <div class="card m-3 p-2 blogCardStyle">
+                                    <img src="./assets/imgs/<?= $item["imgPath"] ?>" />
+                                    <div class="card-body">
+                                        <h4 class="card-title"><?= $item["name"] ?></h4>
+                                        <p class="card-text"><?= $item["body"] ?></p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col-6 text-center">
+                                                <span><i class="fa fa-eye mx-1"></i><?= $item["view_count"] ?></span>
+                                            </div>
+                                            <div class="col-6 text-center">
+                                                <span><i class="fas fa-thumbs-up mx-2"></i><?= $item["likes"] ?></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     <?php } ?>
                 </div>

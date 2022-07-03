@@ -1,7 +1,9 @@
 <?php
 
 require_once './server/setupDB.php';
+require_once './server/control.php';
 $setupDatabase = new SetupDB();
+$control = new Control();
 
 if (!$setupDatabase-> checkErrorExist("apache")) {
     $blogData = $setupDatabase-> getDatabaseData("blog");
@@ -82,7 +84,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                     <div class="col-12">
                         <?php if($setupDatabase-> checkApacheRun("apache")) { ?>
                             <?php foreach($blogData as $item) { ?>
-                                <a href="#">
+                                <a href="/blog/<?= $control-> changeNameToUrl($item["rootPath"]) ?>.php">
                                     <div class="card blog-card">
                                         <div>
                                             <h4><?= $item["name"] ?></h4>
@@ -136,7 +138,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                                 <h4 class="text-center">...مقالات پیشنهادی...</h4>
                             <ul>
                                 <?php foreach($suggestBlog as $item) { ?>
-                                    <a href="#"><li><?= $item["name"]?></li></a>
+                                    <a href="/blog/<?= $control-> changeNameToUrl($item["rootPath"]) ?>.php"><li><?= $item["name"]?></li></a>
                                 <?php }?>
                             </ul>
                         </div>
@@ -144,7 +146,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                             <h4 class="text-center">...محصولات پیشنهادی...</h4>
                             <ul>
                                 <?php foreach($suggestProduct as $item) { ?>
-                                    <a href="#"><li><?= $item["name"]?></li></a>
+                                    <a href="/shop/<?= $control-> changeNameToUrl($item["name"]) ?>.php"><li><?= $item["name"]?></li></a>
                                     <?php }?>
                             </ul>
                         </div>

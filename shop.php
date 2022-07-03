@@ -1,7 +1,9 @@
 <?php
 
 require_once './server/setupDB.php';
+require_once './server/control.php';
 $setupDatabase = new SetupDB();
+$control = new Control();
 
 if (!$setupDatabase-> checkErrorExist("apache")) {
     $blogData = $setupDatabase-> getDatabaseData("blog");
@@ -41,10 +43,10 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">صفحه اصلی</a>
+                        <a class="nav-link" aria-current="page" href="/">صفحه اصلی</a>
                         </li>
                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdown" href="/shop.php">فروشگاه </a>
+                        <a class="nav-link dropdown-toggle active" id="dropdown" href="/shop.php">فروشگاه </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item text-center" href="/shop/desktop-business.php">دسکتاپ بیزنیس</a></li>
                                 <li><a class="dropdown-item text-center" href="/shop/desktop.php">دسکتاپ</a></li>
@@ -81,7 +83,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                     <div class="col-12">
                         <?php if($setupDatabase-> checkApacheRun("apache")) { ?>
                             <?php foreach($productData as $item) { ?>
-                                <a href="#">
+                                <a href="/products/<?= $control-> changeNameToUrl($item["name"]) ?>.php">
                                     <div class="card shop-card">
                                         <div class="row">
                                             <div class="d-none d-md-block col-12 col-md-5">
@@ -179,7 +181,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                                 <h4 class="text-center">...مقالات پیشنهادی...</h4>
                             <ul>
                                 <?php foreach($suggestBlog as $item) { ?>
-                                    <a href="#"><li><?= $item["name"]?></li></a>
+                                    <a href="/blog/<?= $control-> changeNameToUrl($item["rootPath"]) ?>.php"><li><?= $item["name"]?></li></a>
                                 <?php }?>
                             </ul>
                         </div>
@@ -187,8 +189,8 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                             <h4 class="text-center">...محصولات پیشنهادی...</h4>
                             <ul>
                                 <?php foreach($suggestProduct as $item) { ?>
-                                    <a href="#"><li><?= $item["name"]?></li></a>
-                                    <?php }?>
+                                    <a href="/products/<?= $control-> changeNameToUrl($item["name"]) ?>.php"><li><?= $item["name"]?></li></a>
+                                <?php }?>
                             </ul>
                         </div>
                     </div>

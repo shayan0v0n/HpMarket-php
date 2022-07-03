@@ -1,0 +1,34 @@
+@import './variables.scss';
+
+.product-banner {
+    background-color: $fifth_color;
+    padding: 1rem;
+    margin: 2rem;
+    border-radius: 10px;
+    color: #fff;
+        img {
+            border-radius: 10px;
+        }
+}
+
+.product-comments {
+    background-color: $fifth_color;
+    padding: 1rem;
+    margin: 2rem;
+    border-radius: 10px;
+    .product-comment {
+            padding: 1rem;
+            margin: 2rem;
+            background: #fff;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            color: #000;
+            border-radius: 10px;
+        }
+}
+
+.product-form {
+    padding: 1rem;
+    margin: 2rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
