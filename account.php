@@ -1,16 +1,20 @@
 <?php
-require_once '../server/setupDB.php';
-require_once '../server/getDatabase.php';
-require_once '../server/control.php';
+
+require_once './server/setupDB.php';
+require_once './server/getDatabase.php';
 $setupDatabase = new SetupDB();
 $getDatabase = new GetDatabase();
-$control = new Control();
-
 if (!$setupDatabase-> checkErrorExist("apache")) {
-    $prevURL = $_SERVER["REQUEST_URI"];
-    $currentURL = $control-> getCurrentUrl($prevURL, "g");
-    $currentUrlName = $control-> changeUrlToName($currentURL);
-    $currentBlog =  $getDatabase-> getCustomData("blog", "rootPath", $currentUrlName);
+    $userInfoData = $setupDatabase-> getDatabaseData("userInfo");
+    if (isset($_POST['fullname']) && isset($_POST["password"]) && isset($_POST["email"])) {
+        $getDatabase-> setUserInfo($_POST['fullname'], $_POST['password'], $_POST['email']);
+        header("location: http://localhost:8000/");
+    }
+
+    if (isset($_POST['fullnameEdit']) && isset($_POST["passwordEdit"]) && isset($_POST["emailEdit"])) {
+        $getDatabase-> setUserInfoUpdate($_POST['fullnameEdit'], $_POST['passwordEdit'], $_POST['emailEdit']);
+        header("location: http://localhost:8000/");
+    }
 }
 
 ?>
@@ -22,10 +26,10 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../styles/globalStyles.css">
-    <link rel="stylesheet" href="../styles/index.css">
-    <link rel="stylesheet" href="../styles/singleBlog.css">
-    <title>Hp Market - <?= $currentBlog[0]["name"]?></title>
+    <link rel="stylesheet" href="./styles/globalStyles.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/account.css">
+    <title>PHPHp Market</title>
 </head>
 <body dir="rtl">
     <?php if ($setupDatabase-> checkErrorExist("apache")) { ?>
@@ -44,7 +48,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="/">صفحه اصلی</a>
+                        <a class="nav-link" aria-current="page" href="/">صفحه اصلی</a>
                         </li>
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="dropdown" href="/shop.php">فروشگاه </a>
@@ -58,7 +62,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                             </ul>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link active" href="/blog.php">مقالات</a>
+                        <a class="nav-link" href="/blog.php">مقالات</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="/about-us.php">درباره ما</a>
@@ -67,59 +71,65 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                 </div>
                 </div>
                 <div class="navbar-brand">
-                    <a href="/account.php"><i class="fa-solid fa-user p-1"></i></a>
-                    <a href="/cart.php"><i class="fa-solid fa-cart-shopping p-1"></i></a>
+                    <a href="/account"><i class="fa-solid fa-user p-1"></i></a>
+                    <a href="/cart"><i class="fa-solid fa-cart-shopping p-1"></i></a>
                 </div>
             </div>
         </nav>
     </header>
     <main>
-        <?php if (!$setupDatabase-> checkErrorExist("apache")) { ?>
-            <div class="blog-banner">
-                    <div class="text-center">
-                        <img src="/assets/imgs/<?= $currentBlog[0]["imgPath"] ?>" />
-                </div>
-                <div class="pt-5 container">
-                    <h2 class="text-center"><?= $currentBlog[0]["name"]?></h2>
-                    <hr />
-                    <p><?= $currentBlog[0]["body"]?></p>
-                    <p><?= $currentBlog[0]["body"]?></p>
-                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
-                    <p><?= $currentBlog[0]["body"]?></p>
-                    <p><?= $currentBlog[0]["body"]?></p>
-                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
-                </div>
+        <?php if (!isset($userInfoData[0])) { ?>
+            <div class="register-form">
+                <h2 class="text-center">ایجاد حساب کاربری</h2>
+                <form action="./account.php" method="POST">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">نام و نام خانوادگی</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="شایان وثوقی" name="fullname" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput2" class="form-label">رمز عبور</label>
+                        <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="Shayan_021" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput3" class="form-label">ایمیل</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="shayanwqhw@gmail.com" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary w-100" type="submit">ثبت نام</button>
+                    </div>
+                </form>
             </div>
-        <?php } else {?>
-                <div class="blog-banner">
-                        <div class="text-center">
-                            <img src="/assets/imgs/c.png" class="w-50" />
-                    </div>
-                    <div class="pt-5 container">
-                        <h2 class="text-center"><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4 m-2" aria-hidden="true"></a></h2>
-                        <hr />
-                        <span class="placeholder col-8 m-1"></span>
-                        <span class="placeholder col-6 m-1"></span>
-                        <span class="placeholder col-4 m-1"></span>
-                        <span class="placeholder col-8 m-1"></span>
-                        <span class="placeholder col-8 m-1"></span>
-                        <span class="placeholder col-6 m-1"></span>
-                        <span class="placeholder col-4 m-1"></span>
-                        <span class="placeholder col-8 m-1"></span>
-                        <span class="placeholder col-8 m-1"></span>
-                        <span class="placeholder col-6 m-1"></span>
-                        <span class="placeholder col-4 m-1"></span>
-                        <span class="placeholder col-5 m-1"></span>
-                        <span class="placeholder col-2 m-1"></span>
-                        <span class="placeholder col-9 m-1"></span>
-                        <span class="placeholder col-3 m-1"></span>
-                        <span class="placeholder col-5 m-1"></span>
-                    </div>
+            <?php }else {?>
+                <div class="register-form">
+                    <h2 class="text-center">ویرایش اطلاعات حساب کاربری</h2>
+                    <form action="./account.php" method="POST">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">نام و نام خانوادگی</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="fullnameEdit" value="<?= $userInfoData[0]["name"]?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput2" class="form-label">رمز عبور</label>
+                            <input type="password" class="form-control" id="exampleFormControlInput2" name="passwordEdit" value="<?= $userInfoData[0]["password"]?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput3" class="form-label">ایمیل</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput3" name="emailEdit" value="<?= $userInfoData[0]["email"]?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary w-100 m-1" type="submit">ویرایش</button>
+                            <a href="./server/deleteHanlder.php">
+                                <button class="btn btn-danger w-100 m-1" type="button">حذف حساب کاربری</button>
+                            </a>
+                        </div>
+                    </form>
                 </div>
+
         <?php }?>
     </main>
+
+
                 <!-- FOOTER -->
-    <footer class="footer">
+     <footer class="footer">
         <div class="row">
             <div class="col-12 col-md-2 text-center">
                 <div class="row">
@@ -172,9 +182,10 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                 </div>
             </div>
         </div>
-    </footer>  
+    </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="./styles.index.js"></script>
 </html>

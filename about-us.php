@@ -50,8 +50,8 @@
                 </div>
                 </div>
                 <div class="navbar-brand">
-                    <a href="/account"><i class="fa-solid fa-user p-1"></i></a>
-                    <a href="/cart"><i class="fa-solid fa-cart-shopping p-1"></i></a>
+                    <a href="/account.php"><i class="fa-solid fa-user p-1"></i></a>
+                    <a href="/cart.php"><i class="fa-solid fa-cart-shopping p-1"></i></a>
                 </div>
             </div>
         </nav>

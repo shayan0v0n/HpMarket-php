@@ -72,8 +72,8 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                 </div>
                 </div>
                 <div class="navbar-brand">
-                    <a href="/account"><i class="fa-solid fa-user p-1"></i></a>
-                    <a href="/cart"><i class="fa-solid fa-cart-shopping p-1"></i></a>
+                    <a href="/account.php"><i class="fa-solid fa-user p-1"></i></a>
+                    <a href="/cart.php"><i class="fa-solid fa-cart-shopping p-1"></i></a>
                 </div>
             </div>
         </nav>
@@ -96,7 +96,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                 </div>
             </div>
             <div class="product-form">
-                <form method="POST" action="./HP-255-G8-Notebook-PC.php">
+                <form method="POST" action="./<?= $currentURL?>.php">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">نام و نام خانوادگی</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="شایان وثوقی" name="fullname">

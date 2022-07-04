@@ -35,6 +35,7 @@ class QueriesDB {
         $pdo-> exec($currentSqlQuery);
 
         $currentSqlQuery = "CREATE TABLE userInfo (
+            id int default 1,
             name varchar(100) NOT NULL,
             password varchar(100) NOT NULL,
             email varchar(100) NOT NULL)";
