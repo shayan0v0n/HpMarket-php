@@ -16,6 +16,8 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
     if (isset($_POST['fullname']) && isset($_POST["comment"])) {
         $getDatabase-> setProductComment($_POST['fullname'], $_POST['comment'], $currentProduct[0]["id"]);
     }
+
+    $checkUserProductExist = $getDatabase-> getCustomData("userProducts", "name", $currentProduct[0]["name"]);
 };
 
 ?>
@@ -86,7 +88,19 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                         <h2><?= $currentProduct[0]["name"] ?></h2>
                         <p><?= $currentProduct[0]["description"] ?></p>
                         <div class="row">
-                            <div class="col-12 col-md-6"><button class="btn btn-primary w-100">خرید</button></div>
+                            <div class="col-12 col-md-6">
+                                <?php if(count($checkUserProductExist) == 0) { ?>
+                                        <a href="../server/add_product.php?name=<?= $currentProduct[0]["name"]?>
+                                            &desc=<?= $currentProduct[0]["description"]?>
+                                            &imgPath=<?= $currentProduct[0]["imgPath"]?>
+                                            &isSale=<?= $currentProduct[0]["isSale"]?>
+                                            &isPopular=<?= $currentProduct[0]["isPopular"]?>">
+                                            <button class="btn btn-primary w-100">خرید</button>
+                                        </a>
+                                <?php }else { ?>
+                                    <button class="btn btn-primary w-100" disabled>خرید</button>
+                                <?php }?>
+                            </div>
                             <div class="col-12 col-md-6"><span>قیمت: <?= $currentProduct[0]["price"] ?></span></div>
                         </div>
                     </div>

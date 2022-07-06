@@ -41,4 +41,18 @@ class GetDatabase extends SetupDB {
         $pdoQueries = "DELETE FROM userInfo WHERE id = 1;";
         $pdo-> exec($pdoQueries);  
     }
+
+    public function addProduct($nameProduct, $descProduct, $imgPathProduct, $isSaleProduct, $isPopularProduct) {
+        $pdo = $this-> getPdoObj();
+        $pdoQueries = "INSERT INTO userProducts
+        (name, description, imgPath, isSale, isPopular) values
+        ('$nameProduct', '$descProduct', '$imgPathProduct', '$isSaleProduct', '$isPopularProduct')";
+        $pdo-> exec($pdoQueries);
+    }
+    
+    public function deleteProduct($ID) {
+        $pdo = $this-> getPdoObj();
+        $pdoQueries = "DELETE FROM userProducts WHERE id = $ID;";
+        $pdo-> exec($pdoQueries);
+    }
 }
