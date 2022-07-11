@@ -33,22 +33,10 @@
   padding: 1rem;
 }
 
-.footer {
-  background-color: #007c83;
-  color: #eeeeee;
-  padding: 1rem;
-}
-
-.footer a {
-  color: white;
-  text-decoration: underline;
-}
-
 .link-box a {
   color: #0672cb;
   font-size: 1.5rem;
 }
-
 .link-box span {
   font-size: 1.5rem;
 }
@@ -58,11 +46,17 @@
   padding: 1rem;
 }
 
-.blogCardStyle {
+.blog-card {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  color: #000;
+  transition: 0.3s;
 }
-.blogCardStyle img {
+.blog-card img {
   height: 200px !important;
+}
+.blog-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  transform: translateY(-10px);
 }
 
 .category-banner {
@@ -74,14 +68,6 @@
   border-radius: 8px;
 }
 
-.search-box {
-  background: #00adb5;
-  padding: 1rem;
-}
-.search-box input {
-  text-align: right !important;
-}
-
 .current-products {
   color: #fff;
   background: #00adb5;
@@ -91,18 +77,4 @@
 }
 .current-products:hover {
   background: #007c83;
-}
-
-@media all and (min-width: 992px) {
-  .navbar .nav-item .dropdown-menu {
-    display: none;
-  }
-
-  .navbar .nav-item:hover .dropdown-menu {
-    display: block;
-  }
-
-  .navbar .nav-item .dropdown-menu {
-    margin-top: 0;
-  }
 }/*# sourceMappingURL=index.css.map */

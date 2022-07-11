@@ -1,9 +1,12 @@
 <?php
 
 require_once './server/setupDB.php';
+require_once './server/getDatabase.php';
 $setupDatabase = new SetupDB();
+$getDatabase = new GetDatabase();
+
 if (!$setupDatabase-> checkErrorExist("apache")) {
-    $getAllProducts = $setupDatabase-> getDatabaseData("userProducts");
+    $getAllProducts = $getDatabase-> getDatabaseData("userProducts");
 }
 
 
@@ -62,28 +65,136 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                 </div>
                 </div>
                 <div class="navbar-brand">
-                    <a href="/account"><i class="fa-solid fa-user p-1"></i></a>
-                    <a href="/cart"><i class="fa-solid fa-cart-shopping p-1"></i></a>
+                    <a href="/account.php"><i class="fa-solid fa-user p-1"></i></a>
+                    <a href="/cart.php"><i class="fa-solid fa-cart-shopping p-1"></i></a>
                 </div>
             </div>
         </nav>
     </header>
     <main>
-        <div class="row">
-            <?php foreach($getAllProducts as $item) { ?>
-                <div class="col-12 col-md-4">
-                    <div class="card m-2">
-                        <div class="card-body">
-                            <h3><?= $item["name"]?></h3>
-                            <p><?= $item["description"]?></p>
+        <div class="text-center mt-5 container">
+            <h2>فروشگاه</h2>
+            <hr/>
+        </div>
+        <?php if (!$setupDatabase-> checkErrorExist("apache")) {?>
+            <?php if (isset($getAllProducts[0])) {?>
+                <div class="row">
+                    <?php foreach($getAllProducts as $item) { ?>
+                    <div class="col-12 col-md-4">
+                        <div class="card m-2">
+                            <div class="card-body">
+                                <h3><?= $item["name"]?></h3>
+                                <p><?= $item["description"]?></p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="./server/delete_product.php?id=<?= $item["id"]?>"><button class="btn btn-danger w-100">حذف</button></a>
+                            </div>
                         </div>
-                        <div class="card-footer">
-                            <a href="./server/delete_product.php?id=<?= $item["id"]?>"><button class="btn btn-danger w-100">حذف</button></a>
+                    </div>
+                    <?php }?>
+                </div>
+            <?php }else {?>
+                <div class="text-center my-5">
+                    <h3>سبد خرید خالی است.</h3>
+                    <span>برای خرید و تسویه لطفا به فروشگاه رفته و محصول  خود را اضافه کرده</span>
+                </div>
+            <?php }?>
+        <?php }else {?>
+            <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="card m-3 p-2 blogCardStyle">
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a></h4>
+                                <span class="placeholder col-8 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-7 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-11 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card m-3 p-2 blogCardStyle">
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a></h4>
+                                <span class="placeholder col-8 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-7 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-11 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card m-3 p-2 blogCardStyle">
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a></h4>
+                                <span class="placeholder col-8 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-7 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-11 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            <?php }?>
-        </div>
+            <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="card m-3 p-2 blogCardStyle">
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a></h4>
+                                <span class="placeholder col-8 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-7 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-11 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card m-3 p-2 blogCardStyle">
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a></h4>
+                                <span class="placeholder col-8 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-7 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-11 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card m-3 p-2 blogCardStyle">
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a></h4>
+                                <span class="placeholder col-8 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-7 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                                <span class="placeholder col-11 m-1"></span>
+                                <span class="placeholder col-6 m-1"></span>
+                                <span class="placeholder col-4 m-1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <?php }?>
     </main>
                 <!-- FOOTER -->
     <footer class="footer">

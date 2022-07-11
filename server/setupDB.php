@@ -82,12 +82,4 @@ class SetupDB extends QueriesDB {
         $this-> insertProductsData($this-> getPdoObj());
     }
 
-    public function getDatabaseData($tableType) {
-        $pdo = $this-> getPdoObj();
-        $pdoQueries = "SELECT * from $tableType";
-        $pdoPrepare = $pdo-> prepare($pdoQueries);
-        $pdoPrepare-> execute();
-        return $pdoPrepare-> fetchAll();
-    }
-
 }

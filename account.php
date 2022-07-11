@@ -1,11 +1,14 @@
 <?php
 
 require_once './server/setupDB.php';
+require_once './server/control.php';
 require_once './server/getDatabase.php';
 $setupDatabase = new SetupDB();
 $getDatabase = new GetDatabase();
+$control = new Control();
+
 if (!$setupDatabase-> checkErrorExist("apache")) {
-    $userInfoData = $setupDatabase-> getDatabaseData("userInfo");
+    $userInfoData = $getDatabase-> getDatabaseData("userInfo");
     if (isset($_POST['fullname']) && isset($_POST["password"]) && isset($_POST["email"])) {
         $getDatabase-> setUserInfo($_POST['fullname'], $_POST['password'], $_POST['email']);
         header("location: http://localhost:8000/");
@@ -71,8 +74,8 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                 </div>
                 </div>
                 <div class="navbar-brand">
-                    <a href="/account"><i class="fa-solid fa-user p-1"></i></a>
-                    <a href="/cart"><i class="fa-solid fa-cart-shopping p-1"></i></a>
+                    <a href="/account.php"><i class="fa-solid fa-user p-1"></i></a>
+                    <a href="/cart.php"><i class="fa-solid fa-cart-shopping p-1"></i></a>
                 </div>
             </div>
         </nav>

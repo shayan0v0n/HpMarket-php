@@ -2,12 +2,14 @@
 
 require_once './server/setupDB.php';
 require_once './server/control.php';
+require_once './server/getDatabase.php';
 $setupDatabase = new SetupDB();
+$getDatabase = new GetDatabase();
 $control = new Control();
 
 if (!$setupDatabase-> checkErrorExist("apache")) {
-    $blogData = $setupDatabase-> getDatabaseData("blog");
-    $productData = $setupDatabase-> getDatabaseData("products");
+    $blogData = $getDatabase-> getDatabaseData("blog");
+    $productData = $getDatabase-> getDatabaseData("products");
     $suggestBlog = array_slice($blogData, 0, 5);
     $suggestProduct = array_slice($productData, 0, 5);
 }

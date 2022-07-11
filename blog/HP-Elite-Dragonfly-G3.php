@@ -11,6 +11,8 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
     $currentURL = $control-> getCurrentUrl($prevURL, "g");
     $currentUrlName = $control-> changeUrlToName($currentURL);
     $currentBlog =  $getDatabase-> getCustomData("blog", "rootPath", $currentUrlName);
+    $incrementBlogView = $currentBlog[0]["view_count"] + 1;
+    $getDatabase-> countBlogView($currentBlog[0]["id"], $incrementBlogView);
 }
 
 ?>

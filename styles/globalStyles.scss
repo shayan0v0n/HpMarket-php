@@ -30,3 +30,27 @@ a {
     background: rgb(196, 0, 0);
     color: #fff;
 }
+
+.footer {
+    background-color: $fifth_color;
+    color: $fourth_color;
+    padding: 1rem;
+    a {
+        color: white;
+        text-decoration: underline;
+    }
+}
+
+@media all and (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu{ display: none; }
+    .navbar .nav-item:hover .dropdown-menu{ display: block; }
+    .navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+
+.search-box {
+    background: $primary_color;
+    padding:1rem;
+        input {
+            text-align: right !important;
+        }
+}

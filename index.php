@@ -2,14 +2,16 @@
 
 require_once './server/setupDB.php';
 require_once './server/control.php';
+require_once './server/getDatabase.php';
 $setupDatabase = new SetupDB();
+$getDatabase = new GetDatabase();
 $control = new Control();
 
 if (!$setupDatabase-> checkErrorExist("apache")) {
-    $categoriesData = $setupDatabase-> getDatabaseData("categories");
+    $categoriesData = $getDatabase-> getDatabaseData("categories");
     $categoriesPageOne = array_slice($categoriesData, 0, 3);
     $categoriesPageTwo = array_slice($categoriesData, 3, 6);
-    $blogData = $setupDatabase-> getDatabaseData("blog");
+    $blogData = $getDatabase-> getDatabaseData("blog");
     $blogDataOne = array_slice($blogData, 0, 1);
     $blogDataTwo = array_slice($blogData, 2, 3);
 }
@@ -351,7 +353,7 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                     <?php foreach($blogData as $item) { ?>
                         <div class="col-12 col-md-4">
                             <a href="/blog/<?=$control-> changeNameToUrl($item["rootPath"])?>.php">
-                                <div class="card m-3 p-2 blogCardStyle">
+                                <div class="card m-3 p-2 blog-card">
                                     <img src="./assets/imgs/<?= $item["imgPath"] ?>" />
                                     <div class="card-body">
                                         <h4 class="card-title"><?= $item["name"] ?></h4>

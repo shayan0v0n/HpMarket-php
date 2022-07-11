@@ -3,3 +3,8 @@ $secondary_color: #222831;
 $third_color: #d5d6d8;
 $fourth_color: #eeeeee;
 $fifth_color: #007c83;
+
+@mixin hoverable() {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    transform: translateY(-10px);
+}

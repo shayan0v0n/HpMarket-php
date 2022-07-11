@@ -35,23 +35,15 @@
     padding: 1rem;
 }
 
-.footer {
-    background-color: $fifth_color;
-    color: $fourth_color;
-    padding: 1rem;
-}
 
-.footer a {
-    color: white;
-    text-decoration: underline;
-}
-
-.link-box a {
-    color: #0672cb;
-    font-size: 1.5rem;
-}
-.link-box span {
-    font-size: 1.5rem;
+.link-box {
+    a {
+        color: #0672cb;
+        font-size: 1.5rem;
+    }
+    span {
+        font-size: 1.5rem;
+    }
 }
 
 .blog-place {
@@ -59,11 +51,16 @@
     padding: 1rem;
 }
 
-.blogCardStyle {
+.blog-card {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: #000;
+    transition: .3s;
     img {
         height: 200px !important;
     }
+        &:hover {
+            @include hoverable;
+        }
 }
 
 .category-banner {
@@ -72,14 +69,6 @@
     color: #fff;
         img {
             border-radius: 8px;
-        }
-}
-
-.search-box {
-    background: $primary_color;
-    padding:1rem;
-        input {
-            text-align: right !important;
         }
 }
 
@@ -93,10 +82,4 @@
             background: $fifth_color;
             
         }
-}
-
-@media all and (min-width: 992px) {
-    .navbar .nav-item .dropdown-menu{ display: none; }
-    .navbar .nav-item:hover .dropdown-menu{ display: block; }
-    .navbar .nav-item .dropdown-menu{ margin-top:0; }
 }

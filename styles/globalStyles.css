@@ -26,4 +26,35 @@ a:hover {
 .error-bar {
   background: rgb(196, 0, 0);
   color: #fff;
+}
+
+.footer {
+  background-color: #007c83;
+  color: #eeeeee;
+  padding: 1rem;
+}
+.footer a {
+  color: white;
+  text-decoration: underline;
+}
+
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: none;
+  }
+
+  .navbar .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+
+  .navbar .nav-item .dropdown-menu {
+    margin-top: 0;
+  }
+}
+.search-box {
+  background: #00adb5;
+  padding: 1rem;
+}
+.search-box input {
+  text-align: right !important;
 }/*# sourceMappingURL=globalStyles.css.map */

@@ -55,4 +55,19 @@ class GetDatabase extends SetupDB {
         $pdoQueries = "DELETE FROM userProducts WHERE id = $ID;";
         $pdo-> exec($pdoQueries);
     }
+
+    public function getDatabaseData($tableType) {
+        $pdo = $this-> getPdoObj();
+        $pdoQueries = "SELECT * from $tableType";
+        $pdoPrepare = $pdo-> prepare($pdoQueries);
+        $pdoPrepare-> execute();
+        return $pdoPrepare-> fetchAll();
+    }
+    
+    public function countBlogView($ID, $value) {
+        $pdo = $this-> getPdoObj();
+        $pdoQueries = "UPDATE blog SET view_count = $value WHERE id = '$ID'";
+        $pdoPrepare = $pdo-> prepare($pdoQueries);
+        $pdoPrepare-> execute();
+    }
 }
