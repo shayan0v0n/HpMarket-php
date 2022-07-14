@@ -2,8 +2,10 @@
 
 require_once './server/setupDB.php';
 require_once './server/getDatabase.php';
+require_once './server/control.php';
 $setupDatabase = new SetupDB();
 $getDatabase = new GetDatabase();
+$control = new Control();
 
 if (!$setupDatabase-> checkErrorExist("apache")) {
     $getAllProducts = $getDatabase-> getDatabaseData("userProducts");
@@ -76,8 +78,9 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
             <h2>فروشگاه</h2>
             <hr/>
         </div>
-        <?php if (!$setupDatabase-> checkErrorExist("apache")) {?>
-            <?php if (isset($getAllProducts[0])) {?>
+        <div class="m-3">
+            <?php if (!$setupDatabase-> checkErrorExist("apache")) {?>
+                <?php if (isset($getAllProducts[0])) {?>
                 <div class="row">
                     <?php foreach($getAllProducts as $item) { ?>
                     <div class="col-12 col-md-4">
@@ -86,8 +89,9 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                                 <h3><?= $item["name"]?></h3>
                                 <p><?= $item["description"]?></p>
                             </div>
-                            <div class="card-footer">
-                                <a href="./server/delete_product.php?id=<?= $item["id"]?>"><button class="btn btn-danger w-100">حذف</button></a>
+                            <div class="card-footer row m-0">
+                                <a class="col btn btn-success" href="/products/<?= $control-> changeNameToUrl(trim($item["name"]))?>.php">دیدن محصول</a>              
+                                <a class="col" href="./server/delete_product.php?id=<?= $item["id"]?>"><button class="btn btn-danger w-100">حذف</button></a>
                             </div>
                         </div>
                     </div>
@@ -98,8 +102,9 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                     <h3>سبد خرید خالی است.</h3>
                     <span>برای خرید و تسویه لطفا به فروشگاه رفته و محصول  خود را اضافه کرده</span>
                 </div>
-            <?php }?>
-        <?php }else {?>
+                <?php }?>
+            <?php }else {?>
+        </div>
             <div class="row">
                     <div class="col-12 col-md-4">
                         <div class="card m-3 p-2 blogCardStyle">

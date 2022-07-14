@@ -125,10 +125,20 @@ if (!$setupDatabase-> checkErrorExist("apache")) {
                 </form>
             </div>
             <div class="product-comments">
-                <?php foreach($getProductComments as $item) {?>
-                    <div class="product-comment">
-                        <h4><?= $item["name"]?></h4>
-                        <p><?= $item["comment"]?></p>
+                <div class="container">
+                    <h2 class="text-center text-white">دیدگاه</h2>
+                    <hr />
+                </div>
+                <?php if(isset($getProductComments[0])) { ?>
+                    <?php foreach($getProductComments as $item) {?>
+                        <div class="product-comment">
+                            <h4><?= $item["name"]?></h4>
+                            <p><?= $item["comment"]?></p>
+                        </div>
+                    <?php }?>
+                <?php }else {?>
+                    <div class="text-center">
+                        <span class="text-white">هیچ دیدگاهی وجود ندارد، شما اولین دیدگاه را وارد کنید.</span>
                     </div>
                 <?php }?>
             </div>
